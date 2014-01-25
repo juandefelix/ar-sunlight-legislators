@@ -22,20 +22,12 @@ class LegislatorsImporter
     csv = CSV.new(File.open(filename), :headers => true)
 
     csv.each do |row|
-      legislator = Legislator.create!
-      # puts
-      # puts row
-      # puts
-      row.each do |field, value|
-        # debugger
-        # pp field
-        legislator.update_attribute(field, value) if FIELDS.include? field
       # Here we have to create instances of the Legislator class with the csv.each provide.
-        # puts "#{field} = #{value}"
-      #   # TODO: begin
-      #   # raise NotImplementedError, "TODO: figure out what to do with this row and do it!"
-      #   # TODO: end
-        # legislator.field = value
+      legislator = Legislator.create!
+      row.each do |field, value|
+        legislator.update_attribute(field, value) if FIELDS.include? field
+        # raise NotImplementedError, "TODO: figure out what to do with this row and do it!"
+        # TODO: end
       end
     end
   end
