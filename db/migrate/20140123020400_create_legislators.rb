@@ -4,7 +4,7 @@ class CreateLegislators < ActiveRecord::Migration
     create_table :legislators do |t|
       t.string :state
       t.string :title
-      t.string :firtname
+      t.string :firstname
       t.string :middlename
       t.string :lastname
       t.string :name_suffix
