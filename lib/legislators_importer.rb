@@ -1,8 +1,8 @@
 require 'csv'
 require 'pp'
-require 'debugger'
+# require 'debugger'
 require_relative '../app/models/legislator'
-class LegislatorsImporter
+module LegislatorsImporter
   FIELDS = ["state",
             "title",
             "firstname",
@@ -24,13 +24,28 @@ class LegislatorsImporter
     csv.each do |row|
       # Here we have to create instances of the Legislator class with the csv.each provide.
       legislator = Legislator.create!
-      row.each do |field, value|
-        legislator.update_attribute(field, value) if FIELDS.include? field
-        # raise NotImplementedError, "TODO: figure out what to do with this row and do it!"
-        # TODO: end
-      end
+      legislator.update_attribute("state", row["state"])
+      legislator.update_attribute("title", row["title"])
+      legislator.update_attribute("firstname", row["firstname"])
+      legislator.update_attribute("middlename", row["middlename"])
+      legislator.update_attribute("lastname", row["lastname"])
+      legislator.update_attribute("name_suffix", row["name_suffix"])
+      legislator.update_attribute("phone", row["phone"])
+      legislator.update_attribute("fax", row["fax"])
+      legislator.update_attribute("website", row["website"])
+      legislator.update_attribute("webform", row["webform"])
+      legislator.update_attribute("party", row["party"])
+      legislator.update_attribute("gender", row["gender"])
+      legislator.update_attribute("birthdate", row["birthdate"])
+      legislator.update_attribute("twitter_id", row["twitter_id"])
+      legislator.update_attribute("in_office", row["in_office"])
     end
   end
+
+  # def self.to_bool char
+  #   return false if char == "0"
+  #   return true if char == "1"
+  # end
 end
 
 # IF YOU WANT TO HAVE THIS FILE RUN ON ITS OWN AND NOT BE IN THE RAKEFILE, UNCOMMENT THE BELOW

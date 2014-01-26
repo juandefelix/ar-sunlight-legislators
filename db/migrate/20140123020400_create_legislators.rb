@@ -16,6 +16,7 @@ class CreateLegislators < ActiveRecord::Migration
       t.string :gender
       t.string :birthdate
       t.string :twitter_id
+      t.boolean :in_office
     end
   end
 end
