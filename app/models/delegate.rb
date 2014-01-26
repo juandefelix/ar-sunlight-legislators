@@ -1,0 +1,2 @@
+class Del < Legislator
+end

@@ -3,7 +3,7 @@ class CreateLegislators < ActiveRecord::Migration
   def change
     create_table :legislators do |t|
       t.string :state
-      t.string :title
+      t.string :type
       t.string :firstname
       t.string :middlename
       t.string :lastname

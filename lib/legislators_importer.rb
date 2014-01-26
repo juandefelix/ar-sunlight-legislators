@@ -4,7 +4,7 @@ require 'pp'
 require_relative '../app/models/legislator'
 module LegislatorsImporter
   FIELDS = ["state",
-            "title",
+            "type",
             "firstname",
             "middlename",
             "lastname",
@@ -25,7 +25,8 @@ module LegislatorsImporter
       # Here we have to create instances of the Legislator class with the csv.each provide.
       legislator = Legislator.create!
       legislator.update_attribute("state", row["state"])
-      legislator.update_attribute("title", row["title"])
+      legislator.update_attribute("type", row["title"])
+      # puts row["title"]
       legislator.update_attribute("firstname", row["firstname"])
       legislator.update_attribute("middlename", row["middlename"])
       legislator.update_attribute("lastname", row["lastname"])
